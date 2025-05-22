@@ -10,7 +10,7 @@ REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
 r=redis.Redis(host='redis', port=6379)
 
-@app.get("/")
+@app.get("/api/")
 def root():
     return{"message": "FastAPI is working"}
 
