@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-redis
+  name: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-redis
+      app: redis
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-redis
+        app: redis
     spec:
       containers:
         - name: redis
@@ -23,4 +23,4 @@ spec:
       volumes:
         - name: redis-storage
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-redis-pvc
+            claimName: redis-pvc
