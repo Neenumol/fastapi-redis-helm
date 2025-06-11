@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: argo-bootstrap:argoproj.io/Application:argocd/fastapi-dev
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"argo-bootstrap:argoproj.io/Application:argocd/fastapi-dev"},"name":"fastapi-dev","namespace":"argocd"},"spec":{"destination":{"namespace":"dev","server":"https://kubernetes.default.svc"},"project":"default","source":{"helm":{"valueFiles":["../values-dev.yaml"]},"path":"charts/fastapi-redis","repoURL":"https://github.com/Neenumol/fastapi-redis-helm.git","targetRevision":"HEAD"},"syncPolicy":{"automated":{"prune":true,"selfHeal":true}}}}
+  creationTimestamp: "2025-05-22T23:08:22Z"
+  generation: 1281
+  name: fastapi-dev
+  namespace: argocd
+  resourceVersion: "353477"
+  uid: 1be8097c-8961-47ab-9324-96d6d0ee3738
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - ../values-dev.yaml
+    path: charts/fastapi-redis
+    repoURL: https://github.com/Neenumol/fastapi-redis-helm.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  conditions:
+  - lastTransitionTime: "2025-06-11T16:28:14Z"
+    message: 'Failed to load target state: failed to generate manifest for source
+      1 of 1: rpc error: code = Unknown desc = Manifest generation error (cached):
+      charts/fastapi-redis: app path does not exist'
+    type: ComparisonError
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-06-04T21:43:31Z"
+    status: Healthy
+  operationState:
+    finishedAt: "2025-06-11T16:13:26Z"
+    message: 'ComparisonError: Failed to load target state: failed to generate manifest
+      for source 1 of 1: rpc error: code = Unknown desc = charts/fastapi-redis: app
+      path does not exist'
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        prune: true
+        revision: 1769db837e27864b375e907fbd42131f74b6a6ae
+        syncStrategy:
+          hook: {}
+    phase: Error
+    startedAt: "2025-06-11T16:13:26Z"
+    syncResult:
+      revision: ""
+      source:
+        helm:
+          valueFiles:
+          - ../values-dev.yaml
+        path: charts/fastapi-redis
+        repoURL: https://github.com/Neenumol/fastapi-redis-helm.git
+        targetRevision: HEAD
+  reconciledAt: "2025-06-11T16:28:14Z"
+  resourceHealthSource: appTree
+  sourceHydrator: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination:
+        namespace: dev
+        server: https://kubernetes.default.svc
+      source:
+        helm:
+          valueFiles:
+          - ../values-dev.yaml
+        path: charts/fastapi-redis
+        repoURL: https://github.com/Neenumol/fastapi-redis-helm.git
+        targetRevision: HEAD
+    status: Unknown
