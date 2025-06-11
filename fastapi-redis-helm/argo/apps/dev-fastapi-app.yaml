@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/Neenumol/fastapi-redis-helm.git
     targetRevision: HEAD
-    path: charts/fastapi-redis
+    path: fastapi-redis-helm/charts/fastapi-redis
     helm:
       valueFiles:
         - ../values-dev.yaml
